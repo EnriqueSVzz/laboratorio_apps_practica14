@@ -1,0 +1,55 @@
+<ion-header>
+  <ion-toolbar>
+  <ion-title>Confirmación</ion-title>
+  <ion-buttons slot="primary">
+  <ion-button (click)="onCancel()">
+  <ion-icon name="close"></ion-icon>
+  </ion-button>
+  </ion-buttons>
+  </ion-toolbar>
+ </ion-header>
+
+ <ion-content class="ion-text-center">
+  <p>Estas seguro de reservar en {{restaurante.titulo}}?</p>
+  <!--ponemos el form y le especicamos el identicador
+  como formNew y le damos la accion de submit-->
+  <form (ngSubmit)="onReservar()" #formNew="ngForm">
+  <ion-grid>
+  <ion-row>
+  <ion-col size="6" offset="3" class="ion-text-center">
+  <ion-img [src]="restaurante.imgUrl"></ion-img>
+  </ion-col>
+  </ion-row>
+
+    <!--AGREGAMOS ESTE ROW CON EL NUEVO INPUT QUE USAREMOS-->
+ <ion-row>
+  <ion-col size="12" class="ion-text-center">
+  <ion-item>
+  <ion-label position="floating">A nombre de</ion-label>
+  <ion-input [(ngModel)]= "Nombre" required name="nombre"></ion-input>
+  </ion-item>
+  </ion-col>
+  </ion-row>
+
+  <ion-row>
+    <ion-col size="12" class="ion-text-center">
+    <ion-item>
+    <ion-label position="floating">Fecha</ion-label>
+    <ion-datetime
+    display-format="MMM DD YYYY HH:ss"
+    picker-format="YY MMM DD HH ss"
+    [ngModel]="fecha"
+    required name="horario"
+    [min]="desdeMin">
+    </ion-datetime>
+    </ion-item>
+    </ion-col>
+    </ion-row>
+  </ion-grid>
+  <!--Especicamos que con este boton enviamos el form con la accion de submit que se especica en el form arriba-->
+  <ion-button color="primary" type="submit" [disabled]= "!formNew.valid"> Si, reservar!</ion-button>
+  </form>
+
+
+ </ion-content>
+

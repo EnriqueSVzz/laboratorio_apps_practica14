@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar color="primary">
+  <ion-buttons slot="start">
+  <ion-menu-button menu="menu1"></ion-menu-button>
+  </ion-buttons>
+  <ion-title>Ofertas</ion-title>
+  </ion-toolbar>
+ </ion-header>
+
+ <div *ngIf= "isLoading">
+
+  <ion-spinner color="primary"></ion-spinner>
+
+</div>
+
+ <ion-content *ngIf= "!isLoading">
+  <ion-grid>
+  <ion-row>
+  <ion-col size="12" size-sm="8" offset-sm="2" text-center>
+  <!--Oferta-Element-->
+  <ion-list *ngFor= "let a of oferta">
+    <ion-card>
+
+      <ion-card-header>
+      <ion-card-title>{{a.title}}</ion-card-title>
+      <ion-card-subtitle>{{a.descripcion }}</ion-card-subtitle>
+      </ion-card-header>
+
+      <ion-img styrle="height: 200px"[src]= "a.image">  </ion-img>
+
+      <ion-card-content>
+      <p>{{a.vigencia}}</p>
+      </ion-card-content>
+
+      </ion-card>
+  </ion-list>
+
+  </ion-col>
+  </ion-row>
+  </ion-grid>
+ </ion-content>
